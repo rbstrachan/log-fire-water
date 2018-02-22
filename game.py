@@ -2,10 +2,10 @@ import random
 
 go_again = True
 score = 0
-name = raw_input("Welcome to a game of Log, Fire, Water! What's your name? ").title()
-affirm = raw_input("Would you like to set a target score? ")
+name = raw_input("Welcome to the game of Log, Fire, Water! What's your name? ").title()
+affirm = raw_input("Would you like to set a target score? ").lower()
 
-if affirm.lower() == "yes" or affirm == "y":
+if affirm == "yes" or affirm == "y":
   goal = raw_input("What score would you like to reach? ")
   
 print
@@ -21,11 +21,11 @@ while go_again == True:
   else:
   	computerChoice = "Water"
   	
-  if playerChoice.lower() == "l" or playerChoice.lower() == "log":
+  if playerChoice == "L" or playerChoice == "Log":
   	playerChoice = "Log"
-  elif playerChoice.lower() == "f" or playerChoice.lower() == "fire":
+  elif playerChoice == "F" or playerChoice == "Fire":
   	playerChoice = "Fire"
-  elif playerChoice.lower() == "w" or playerChoice.lower() == "water":
+  elif playerChoice == "W" or playerChoice == "Water":
   	playerChoice = "Water"
   else:
     playerChoice = "null"
@@ -34,30 +34,30 @@ while go_again == True:
     print
     print playerChoice + " vs " + computerChoice
 
-  if playerChoice.lower() == computerChoice.lower():
+  if playerChoice == computerChoice:
     print "Draw! That was a close one."
     print
-  elif playerChoice.lower() == "log" and computerChoice.lower() == "fire":
+  elif playerChoice == "Log" and computerChoice == "Fire":
     score -= 1
     print "Aw man, you lost! Better luck next time."
     print
-  elif playerChoice.lower() == "log" and computerChoice.lower() == "water":
+  elif playerChoice == "Log" and computerChoice == "Water":
     score += 1
     print "Congratulations, " + name + ". You won!"
     print
-  elif playerChoice.lower() == "fire" and computerChoice.lower() == "log":
+  elif playerChoice == "Fire" and computerChoice == "Log":
     score += 1
     print "Congratulations, " + name + ". You won!"
     print
-  elif playerChoice.lower() == "fire" and computerChoice.lower() == "water":
+  elif playerChoice == "Fire" and computerChoice == "Water":
     score -= 1
     print "Aw man, you lost! Better luck next time."
     print
-  elif playerChoice.lower() == "water" and computerChoice.lower() == "log":
+  elif playerChoice == "Water" and computerChoice == "Log":
     score -= 1
     print "Aw man, you lost! Better luck next time."
     print
-  elif playerChoice.lower() == "water" and computerChoice.lower() == "fire":
+  elif playerChoice == "Water" and computerChoice == "Fire":
     score += 1
     print "Congratulations, " + name + ". You won!"
     print
@@ -67,7 +67,7 @@ while go_again == True:
     print
     go_again = True
 
-  if affirm.lower() == "yes" or affirm == "y":
+  if affirm == "yes" or affirm == "y":
     if int(score) == int(goal):
       again = raw_input("Congratulations, you beat the computer. Want to try better your score? ").lower()
       if again == "no" or again == "n":
