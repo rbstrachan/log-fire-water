@@ -1,13 +1,10 @@
 import random
 
 go_again = True
-games = 0
-outcome = 0
 score = 0
 name = raw_input("Welcome to a game of Log, Fire, Water! What's your name? ").title()
+goal = input("\nWhat score would you like to beat? ")
 
-print
-goal = input("What score would you like to beat? ")
 print
 
 while go_again == True:
@@ -23,8 +20,6 @@ while go_again == True:
   	
   print
   print playerChoice + " vs " + computerChoice
-  
-  games += 1
 
   if playerChoice == computerChoice:
     print
