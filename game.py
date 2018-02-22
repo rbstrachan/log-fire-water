@@ -75,6 +75,7 @@ while go_again == True:
         print "That's a shame! Thanks for playing, " + name + "."
         go_again = False
       else:
+        score = 0
         print
     elif -3 < score < goal:
       print "Your score is " + str(score) + ". Get a score of " + str(goal) + " to win!"
@@ -86,6 +87,7 @@ while go_again == True:
         print "That's a shame! Thanks for playing, " + name + "."
         go_again = False
       else:
+        score = 0
         print
   else:
     go_again = True
