@@ -25,9 +25,10 @@ while go_again == True:
   	playerChoice = "Water"
   else:
     playerChoice = "null"
-  	
-  print
-  print playerChoice + " vs " + computerChoice
+  
+  if playerChoice != "null":
+    print
+    print playerChoice + " vs " + computerChoice
 
   if playerChoice.lower() == computerChoice.lower():
     print "Draw! That was a close one."
