@@ -1,2 +1,2 @@
-# rock-paper-scissors
-A game of Rock, Paper, Scissors in Python.
+# log-fire-water
+An alternate game of Rock, Paper, Scissors in Python.
