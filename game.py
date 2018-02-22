@@ -4,7 +4,6 @@ go_again = True
 score = 0
 name = raw_input("Welcome to a game of Log, Fire, Water! What's your name? ").title()
 goal = input("\nWhat score would you like to beat? ")
-
 print
 
 while go_again == True:
@@ -18,11 +17,19 @@ while go_again == True:
   else:
   	computerChoice = "Water"
   	
+  if playerChoice.lower() == "l" or playerChoice.lower() == "log":
+  	playerChoice = "Log"
+  elif playerChoice.lower() == "f" or playerChoice.lower() == "fire":
+  	playerChoice = "Fire"
+  elif playerChoice.lower() == "w" or playerChoice.lower() == "water":
+  	playerChoice = "Water"
+  else:
+    playerChoice = "null"
+  	
   print
   print playerChoice + " vs " + computerChoice
 
-  if playerChoice == computerChoice:
-    print
+  if playerChoice.lower() == computerChoice.lower():
     print "Draw! That was a close one."
     print
   elif playerChoice.lower() == "log" and computerChoice.lower() == "fire":
@@ -37,7 +44,7 @@ while go_again == True:
     score += 1
     print "Congratulations, " + name + ". You won!"
     print
-  elif playerChoice.lower() == "fire"and computerChoice.lower() == "water":
+  elif playerChoice.lower() == "fire" and computerChoice.lower() == "water":
     score -= 1
     print "Aw man, you lost! Better luck next time."
     print
@@ -50,12 +57,13 @@ while go_again == True:
     print "Congratulations, " + name + ". You won!"
     print
   else:
+    print
     print "Oops! That's not an option. You can pick from Log, Fire or Water. Try again."
     print
     go_again = True
 
   if -3 < score < goal:
-    print "Your score is now " + str(score) + ". Get a score of " + str(goal) + " to win!"
+    print "Your score is " + str(score) + ". Get a score of " + str(goal) + " to win!"
     print
   elif score == goal:
     again = raw_input("Congratulations, you bet the computer. Want to try better your score? ").lower()
