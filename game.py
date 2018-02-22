@@ -3,12 +3,16 @@ import random
 go_again = True
 score = 0
 name = raw_input("Welcome to a game of Log, Fire, Water! What's your name? ").title()
-goal = raw_input("\nWhat score would you like to beat? ")
+affirm = raw_input("Would you like to set a target score? ")
+
+if affirm.lower() == "yes" or affirm == "y":
+  goal = raw_input("What score would you like to reach? ")
+  
 print
 
 while go_again == True:
   playerChoice = raw_input("Hey, " + name.title() + "!" + " Log, Fire or Water? ").title()
-  computerChoice = random.randint(1,1)
+  computerChoice = random.randint(1,3)
 
   if computerChoice == 1:
   	computerChoice = "Log"
@@ -63,21 +67,25 @@ while go_again == True:
     print
     go_again = True
 
-  if goal == "" or goal == str(0):
-    go_again = True
-  else:
-    if -3 < score < goal:
-      print "Your score is " + str(score) + ". Get a score of " + str(goal) + " to win!"
-      print
-    elif score == goal:
+  if affirm.lower() == "yes" or affirm == "y":
+    if int(score) == int(goal):
       again = raw_input("Congratulations, you beat the computer. Want to try better your score? ").lower()
       if again == "no" or again == "n":
         print
         print "That's a shame! Thanks for playing, " + name + "."
         go_again = False
+      else:
+        print
+    elif -3 < score < goal:
+      print "Your score is " + str(score) + ". Get a score of " + str(goal) + " to win!"
+      print
     elif score == -3:
       again = raw_input("Unlucky, the computer beat you. Want to get your revenge? ").lower()
       if again == "no" or again == "n":
         print
         print "That's a shame! Thanks for playing, " + name + "."
         go_again = False
+      else:
+        print
+  else:
+    go_again = True
