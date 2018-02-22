@@ -1,72 +1,78 @@
 import random
 
 go_again = True
+games = 0
+outcome = 0
+score = 0
+name = raw_input("Welcome to a game of Log, Fire, Water! What's your name? ").title()
 
-name = raw_input("Welcome to Rock, Paper, Scissors! What's your name? ").title()
+print
+goal = input("What score would you like to beat? ")
 print
 
 while go_again == True:
-  playerChoice = raw_input("Hey, " + name.title() + "!" + " Rock, Paper or Scissors? ").title()
-  computerChoice = random.randint(1,3)
+  playerChoice = raw_input("Hey, " + name.title() + "!" + " Log, Fire or Water? ").title()
+  computerChoice = random.randint(1,1)
 
   if computerChoice == 1:
-  	computerChoice = "Rock"
+  	computerChoice = "Log"
   elif computerChoice == 2:
-  	computerChoice = "Paper"
+  	computerChoice = "Fire"
   else:
-  	computerChoice = "Scissors"
+  	computerChoice = "Water"
   	
   print
-
   print playerChoice + " vs " + computerChoice
+  
+  games += 1
 
   if playerChoice == computerChoice:
-    print "Draw!"
-    outcome = 0
-  elif playerChoice.lower() == "rock" and computerChoice.lower() == "paper":
-    print "Computer Wins!"
-    outcome = 2
-  elif playerChoice.lower() == "rock" and computerChoice.lower() == "scissors":
-    print name + " Wins!"
-    outcome = 1
-  elif playerChoice.lower() == "paper" and computerChoice.lower() == "rock":
-    print name + " Wins!"
-    outcome = 1
-  elif playerChoice.lower() == "paper"and computerChoice.lower() == "scissors":
-    print "Computer Wins!"
-    outcome = 2
-  elif playerChoice.lower() == "scissors" and computerChoice.lower() == "rock":
-    print "Computer Wins!"
-    outcome = 2
-  elif playerChoice.lower() == "scissors" and computerChoice.lower() == "paper":
-    print name + " Wins!"
-    outcome = 1
+    print
+    print "Draw! That was a close one."
+    print
+  elif playerChoice.lower() == "log" and computerChoice.lower() == "fire":
+    score -= 1
+    print "Aw man, you lost! Better luck next time."
+    print
+  elif playerChoice.lower() == "log" and computerChoice.lower() == "water":
+    score += 1
+    print "Congratulations, " + name + ". You won!"
+    print
+  elif playerChoice.lower() == "fire" and computerChoice.lower() == "log":
+    score += 1
+    print "Congratulations, " + name + ". You won!"
+    print
+  elif playerChoice.lower() == "fire"and computerChoice.lower() == "water":
+    score -= 1
+    print "Aw man, you lost! Better luck next time."
+    print
+  elif playerChoice.lower() == "water" and computerChoice.lower() == "log":
+    score -= 1
+    print "Aw man, you lost! Better luck next time."
+    print
+  elif playerChoice.lower() == "water" and computerChoice.lower() == "fire":
+    score += 1
+    print "Congratulations, " + name + ". You won!"
+    print
   else:
-    print "Oops! Something didn't work quite right. Try running the script again!"
+    print "Oops! That's not an option. You can pick from Log, Fire or Water. Try again."
+    print
+    go_again = True
 
-  print
-
-  if outcome == 0:
-    again = raw_input("Ooh, close! Wanna have another go? ").lower()
+  if -3 < score < goal:
+    print "Your score is now " + str(score) + ". Get a score of " + str(goal) + " to win!"
+    print
+  elif score == goal:
+    again = raw_input("Congratulations, you bet the computer. Want to try better your score? ").lower()
     if again == "no" or again == "n":
       print
-      print "Thanks for playing, " + name + "."
+      print "That's a shame! Thanks for playing, " + name + "."
       go_again = False
-    else:
-      print
-  elif outcome == 1:
-    again = raw_input("Congratualtions, you won! Willing to try again? ").lower()
-    if again == "no" or again.l() == "n":
-      print
-      print "Thanks for playing, " + name + "."
-      go_again = False
-    else:
-      print
-  elif outcome == 2:
-    again = raw_input("Aw man, the computer bet you! Better luck next time. Up for another game? ").lower()
+  elif score == -3:
+    again = raw_input("Unlucky, the computer bet you. Want to get your revenge? ").lower()
     if again == "no" or again == "n":
       print
-      print "Thanks for playing, " + name + "."
+      print "That's a shame! Thanks for playing, " + name + "."
       go_again = False
-    else:
-      print
+  else:
+    go_again = True
