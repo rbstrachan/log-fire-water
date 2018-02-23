@@ -1,17 +1,21 @@
 import random
+import time
 
 go_again = True
 score = 0
-name = raw_input("Welcome to the game of Log, Fire, Water! What's your name? ").title()
-affirm = raw_input("Would you like to set a target score? ").lower()
+name = raw_input("Welcome to the game of Log, Fire, Water!\nIn this variation of Rock, Paper, Scissors;\nLog bridges Water;\nWater defeats Fire; and\nFire burns Log.\nTo start, tell me, what's your name? ").title()
+affirm = raw_input("\nNice to meet you, " + name.title() + "." + " Would you like to set yourself a target score? ").lower()
 
 if affirm == "yes" or affirm == "y":
-  goal = raw_input("What score would you like to reach? ")
+  goal = raw_input("\nOk, great. What score would you like to reach? ")
+  print "\nGreat! " + str(goal) + " seems like a reasonable goal. Every time you win a game of Log, Fire, Water! your score will increase by 1. If you lose a game, your score will decrease by 1. Draws do not affect your score. If your score reaches " + str(goal) + ", you'll win and the game will end. If, however, your score reaches -3, the computer will win. You'll have the option to claim your revenge if you so wish. Enjoy!\n\nStarting game..."
+  time.sleep(19)
   
-print
+time.sleep(1)
+print "\n" * 60
 
 while go_again == True:
-  playerChoice = raw_input("Hey, " + name.title() + "!" + " Log, Fire or Water? ").title()
+  playerChoice = raw_input("Your turn to play, " + name.title() + "!" + " Log, Fire or Water? ").title()
   computerChoice = random.randint(1,3)
 
   if computerChoice == 1:
@@ -67,27 +71,34 @@ while go_again == True:
     print
     go_again = True
 
+  time.sleep(1.5)
+  print "\n" * 60
+  
   if affirm == "yes" or affirm == "y":
     if int(score) == int(goal):
       again = raw_input("Congratulations, you beat the computer. Want to try better your score? ").lower()
       if again == "no" or again == "n":
-        print
+        time.sleep(1)
+        print "\n" * 60
         print "That's a shame! Thanks for playing, " + name + "."
         go_again = False
       else:
         score = 0
-        print
+        time.sleep(1)
+        print "\n" * 60
     elif -3 < score < goal:
       print "Your score is " + str(score) + ". Get a score of " + str(goal) + " to win!"
       print
     elif score == -3:
       again = raw_input("Unlucky, the computer beat you. Want to get your revenge? ").lower()
       if again == "no" or again == "n":
-        print
+        time.sleep(1)
+        print "\n" * 60
         print "That's a shame! Thanks for playing, " + name + "."
         go_again = False
       else:
         score = 0
-        print
+        time.sleep(1)
+        print "\n" * 60
   else:
     go_again = True
