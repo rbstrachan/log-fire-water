@@ -3,6 +3,7 @@ import time
 
 go_again = True
 score = 0
+turns = 0
 name = input("Welcome to the game of Log, Fire, Water!\nIn this variation of Rock, Paper, Scissors;\nLog bridges Water;\nWater defeats Fire; and\nFire burns Log.\nTo start, tell me, what's your name? ").title()
 affirm = input("\nNice to meet you, " + name.title() + "." + " Would you like to set yourself a target score? ").lower()
 
@@ -71,7 +72,8 @@ while go_again == True:
     print()
     go_again = True
 
-  time.sleep(1.5)
+  turns += 1
+  time.sleep(2)
   print("\n" * 60)
   
   if affirm == "yes" or affirm == "y":
@@ -101,4 +103,11 @@ while go_again == True:
         time.sleep(1)
         print("\n" * 60)
   else:
-    go_again = True
+    if turns % 5 == 0 and turns != 0:
+      interested = input("You've played " + str(turns) +  " games! Want to continue playing? ").lower()
+      if interested == "yes" or interested == "y":
+        go_again = True
+      else:
+        go_again = False
+    else:
+      go_again = True
